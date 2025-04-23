@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  name: meilisearch
+  version: 1.7.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/meilisearch/meilisearch/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 5a7a5dd79e772ca1308afd8d92dcd3b5e546906fe01d30978783589133a78b77
+
+build:
+  number: 0
+  skip: ppc64le
+
+requirements:
+  build:
+    - ${{ compiler('rust') }}
+    - cargo-bundle-licenses
+    # for the jemalloc-sys crate
+    - if: linux or osx
+      then: ${{ compiler('c') }}
+    - if: linux
+      then: make
+
+tests:
+  - script:
+      - meilisearch --help
+      - meilisearch --version
+      - meilitool --help
+      - meilitool --version
+
+about:
+  license: MIT
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  summary: Powerful, fast, and an easy to use search engine
+  homepage: https://www.meilisearch.com/
+  repository: https://github.com/meilisearch
+
+extra:
+  recipe-maintainers:
+    - wolfv
