@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: meilisearch
-  version: 1.7.0
+  version: 1.14.0
 
 package:
   name: ${{ name|lower }}
@@ -10,13 +10,18 @@ package:
 
 source:
   url: https://github.com/meilisearch/meilisearch/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 5a7a5dd79e772ca1308afd8d92dcd3b5e546906fe01d30978783589133a78b77
+  sha256: 0909838996e0a0e3bff84d1c60d1272401732b58136267542956699cd156708b
 
 build:
   number: 0
   skip: ppc64le
 
 requirements:
+  host:
+    - zlib
+    - bzip2
+    - xz
+    - libgit2
   build:
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
