@@ -17,19 +17,20 @@ build:
   skip: ppc64le
 
 requirements:
-  host:
-    - zlib
-    - bzip2
-    - xz
-    - libgit2
   build:
     - ${{ compiler('rust') }}
+    - ${{ stdlib('c') }}
     - cargo-bundle-licenses
     # for the jemalloc-sys crate
     - if: linux or osx
       then: ${{ compiler('c') }}
     - if: linux
       then: make
+  host:
+    - zlib
+    - bzip2
+    - liblzma-devel
+    - libgit2
 
 tests:
   - script:
