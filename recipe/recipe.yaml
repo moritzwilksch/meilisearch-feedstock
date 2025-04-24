@@ -18,15 +18,15 @@ build:
 
 requirements:
   build:
+    - ${{ compiler('c') }}
     - ${{ compiler('rust') }}
     - ${{ stdlib('c') }}
     - cargo-bundle-licenses
-    # for the jemalloc-sys crate
-    - if: linux or osx
-      then: ${{ compiler('c') }}
-    - if: linux
-      then: make
+    - make
   host:
+    - if: osx
+      then:
+        - libiconv
     - zlib
     - bzip2
     - liblzma-devel
