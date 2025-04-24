@@ -38,7 +38,6 @@ requirements:
     - bzip2
     - liblzma-devel
     - libgit2
-    - pkg-config
 tests:
   - script:
       - meilisearch --help
