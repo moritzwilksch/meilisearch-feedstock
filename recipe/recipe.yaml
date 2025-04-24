@@ -25,6 +25,9 @@ requirements:
     - make
     - libgit2
     - pkg-config
+    - if: osx
+      then:
+        - libiconv
 
   host:
     - if: osx
