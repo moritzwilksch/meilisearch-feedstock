@@ -23,6 +23,8 @@ requirements:
     - ${{ stdlib('c') }}
     - cargo-bundle-licenses
     - make
+    - pkg-config
+
   host:
     - if: osx
       then:
@@ -31,7 +33,7 @@ requirements:
     - bzip2
     - liblzma-devel
     - libgit2
-
+    - pkg-config
 tests:
   - script:
       - meilisearch --help
