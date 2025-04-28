@@ -8,8 +8,6 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
-libgit2:
-- '1.9'
 liblzma_devel:
 - '5'
 rust_compiler:
