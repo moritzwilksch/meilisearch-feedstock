@@ -24,6 +24,7 @@ requirements:
     - cargo-bundle-licenses
     - make
     - pkg-config
+    - libgit2 1.8.*
     - if: osx
       then:
         - libiconv
