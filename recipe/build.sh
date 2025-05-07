@@ -9,6 +9,7 @@ export DYLD_FALLBACK_LIBRARY_PATH="${BUILD_PREFIX}/lib"
 
 if [[ "${target_platform}" != "${build_platform}" ]]; then
   export RUSTFLAGS="${RUSTFLAGS:-} -L${BUILD_PREFIX}/lib"
+  export LDFLAGS="${LDFLAGS} -L${BUILD_PREFIX}/lib"
 fi
 
 cargo build --release --locked
